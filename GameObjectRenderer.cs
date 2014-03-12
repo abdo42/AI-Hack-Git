@@ -57,9 +57,17 @@ namespace AI_Hack.Simulator
                 AddTexture(textures[i]);
         }
 
-        public override void Draw(Vector2 position)
+        public override void Draw(Vector2 position) // if u wanna use it , but i brefer to send the wrap once and draw accordin to it
         {
-            Draw();
+           // Draw();
+            UManager.Instance.Sprite.Begin();
+
+            //  DestRect = new Rectangle((int)parent.Position.X, (int)parent.Position.X, texture.Width, texture.Height);
+            Rectangle srcRect = new Rectangle(0, 0, textures[index].Width, textures[index].Height);
+            UManager.Instance.Sprite.Draw(textures[index], position, srcRect, Color.White, angle,
+                               new Vector2(0, 0), 1, SpriteEffects.None, 0.0f);
+
+            UManager.Instance.Sprite.End();
         }
         public override void Draw()
         {
